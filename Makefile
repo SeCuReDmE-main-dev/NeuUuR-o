@@ -4,7 +4,7 @@ PIP = pip3
 DOCKER_COMPOSE = docker-compose
 
 # Define targets
-.PHONY: all install build run test clean
+.PHONY: all install build run test clean setup train-model
 
 # Default target
 all: install build run
@@ -34,3 +34,10 @@ clean:
 	rm -rf .coverage
 	rm -rf coverage.xml
 	rm -rf htmlcov
+
+setup:
+	# ...existing setup commands...
+	bash setup-commands.sh
+
+train-model:
+	python src/modules/NeutrosophicDataProcessing/data_filter_adapter.py

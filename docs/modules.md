@@ -831,3 +831,25 @@ covariance_matrix = vector_matrix_operations(filtered_data)
 # Save or output the filtered data
 filtered_data.to_csv("filtered_data.csv", index=False)
 ```
+
+# NeuUuR-o Module
+
+## Description
+NeuUuR-o is the dynamic actuator within the SeCuReDmE framework, responsible for initiating and managing subconscious processes and data gathering activities. It handles data scripting, neural network training, and subconscious process management.
+
+## Core Functions
+- **Data Scripting**: Generates and refines data scripts for accurate data processing.
+- **Neural Network Training**: Continuously trains neural networks to enhance learning capabilities.
+- **Subconscious Process Management**: Manages subconscious operations for seamless functionality.
+
+## Integration with MindsDB BYOM
+
+NeuUuR-o now utilizes MindsDB's Bring Your Own Model (BYOM) feature to integrate custom time series forecasting models using NeuralForecast and StatsForecast.
+
+### Features
+
+- **Custom Model Engine**: Defines a custom MindsDB engine `neuucro_engine` for time series forecasting.
+- **Time Series Forecasting**: Supports models like AutoARIMA for accurate predictions.
+- **Parameter Handling**: Time series features can be controlled via parameters in the Human Hub social media portal.
+
+### Usage

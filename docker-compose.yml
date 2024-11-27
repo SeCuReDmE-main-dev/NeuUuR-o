@@ -19,8 +19,14 @@ services:
     image: mindsdb/mindsdb
     ports:
       - "47334:47334"
+      - "47335:47335"
     volumes:
       - mindsdb_data:/root/mindsdb_storage
+      - ./model.py:/app/model.py
+      - ./requirements.txt:/app/requirements.txt
+    environment:
+      MINDSDB_INSTALL_PLUGINS: "neuralforecast,statsforecast"
+      MINDSDB_EXPOSE_UI: "true"
     networks:
       - ffed_network
 

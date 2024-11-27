@@ -150,6 +150,23 @@ pip install -r requirements.txt
 
 # Build Docker images
 docker-compose build
+
+# Install MindsDB and dependencies
+pip install mindsdb statsforecast neuralforecast
+
+# Start MindsDB
+mindsdb --api=http &
+
+# Wait for MindsDB to start
+sleep 10
+
+# Create MindsDB engine for the custom model
+curl -X POST "http://localhost:47334/api/handlers/byom/neuucro_engine" \
+  -F "code=@model.py" \
+  -F "modules=@requirements.txt"
+
+# Verify that the engine was created
+mindsdb_sql "SHOW ML_ENGINES;"
 EOL
 
 cat <<EOL > install.bat

@@ -9,14 +9,16 @@ setup(
         'torch',
         'torchquantum',
         'qiskit',
-    ]
-        'qiskit',
         'transformers',
         'pycaret',
         'ray[tune]',
         'pillow',
         'numpy',
-        'onnxruntime'
+        'onnxruntime',
+        'securidme-engine',
+        'clai-helper',
+        'bigdata',
+        'datagrip',
     ],
     entry_points={
         'console_scripts': [
