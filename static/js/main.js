@@ -19,21 +19,37 @@ document.getElementById('extract_features_button').addEventListener('click', fun
 
 document.getElementById('analyze_data_button').addEventListener('click', function() {
     const data = document.getElementById('time_series_data').value;
-    fetch('/analyze_data', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ time_series_data: JSON.parse(data) })
-    })
-    .then(response => response.json())
-    .then(analysis => {
-        document.getElementById('analysis_result').innerText = JSON.stringify(analysis, null, 2);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+    try {
+        const parsedData = JSON.parse(data);
+        if (!validateClusterData(parsedData)) {
+            throw new Error('Invalid cluster data format');
+        }
+        fetch('/analyze_data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ time_series_data: parsedData })
+        })
+        .then(response => response.json())
+        .then(analysis => {
+            document.getElementById('analysis_result').innerText = JSON.stringify(analysis, null, 2);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    } catch (error) {
+        console.error('Error processing cluster data:', error);
+        document.getElementById('analysis_result').innerText = 'Error: ' + error.message;
+    }
 });
+
+function validateClusterData(data) {
+    return Array.isArray(data) && data.every(cluster => 
+        cluster.hasOwnProperty('position') && 
+        cluster.hasOwnProperty('charge') &&
+        Array.isArray(cluster.charge));
+}
 
 document.getElementById('neuuro_process_button').addEventListener('click', function() {
     const data = document.getElementById('time_series_data').value;

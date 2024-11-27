@@ -128,7 +128,44 @@ class NeuUuRoActuator:
     def __init__(self, config):
         self.config = config
         self.predictor = Predictor(name=config['mindsdb_model'])
+        self.cluster_nn = self._create_cluster_nn()
+        self.position_nn = self._create_position_nn()
         
+    def _create_cluster_nn(self):
+        """Creates neural network for cluster splitting"""
+        model = Sequential([
+            Dense(128, activation='relu', input_shape=(60,)),
+            Dropout(0.3),
+            Dense(64, activation='relu'),
+            Dense(3, activation='softmax')
+        ])
+        model.compile(optimizer='adam',
+                     loss='categorical_crossentropy',
+                     metrics=['accuracy'])
+        return model
+
+    def process_cluster(self, cluster_data):
+        """Process cluster data with neural networks"""
+        # Normalize cluster data
+        normalized = self._normalize_cluster_data(cluster_data)
+        
+        # Predict number of particles
+        n_particles = self.cluster_nn.predict(normalized)
+        
+        # Get positions for split clusters
+        positions = self.position_nn.predict(normalized)
+        
+        return {
+            'n_particles': n_particles,
+            'positions': positions,
+            'uncertainties': self._calculate_uncertainties(positions)
+        }
+        
+    def _normalize_cluster_data(self, data):
+        """Normalize cluster data for NN input"""
+        # Add normalization logic
+        return normalized_data
+
     def create_ai_bot(self, task_type):
         """Creates specialized AI bots for data gathering"""
         bot_config = {

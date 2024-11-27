@@ -40,7 +40,13 @@ CMD ["pytest", "/app/tests"]
 # Neutrosophic core image
 FROM build as neutrosophic
 COPY neutrosophic%20quantum%20FfeD%20enhancement/core.py /app/
-RUN pip install numpy pandas scipy
+RUN pip install \
+    tensorflow-gpu \
+    pytorch \
+    scikit-learn \
+    numpy \
+    pandas \
+    scipy
 
 # Full featured image with all integrations
 FROM neutrosophic as cloud

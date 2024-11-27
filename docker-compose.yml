@@ -78,11 +78,21 @@ services:
     environment:
       - PYTHONPATH=/app
       - NEUURO_CONFIG=/app/config/neuuro.json
+      - CUDA_VISIBLE_DEVICES=0  # Enable GPU support
+      - NN_BATCH_SIZE=64
+      - NN_EPOCHS=100
     networks:
       - ffed_network
     depends_on:
       - mindsdb
       - database
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
 
 networks:
   ffed_network:
