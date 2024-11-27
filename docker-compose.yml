@@ -50,6 +50,17 @@ services:
     networks:
       - ffed_network
 
+  test:
+    build:
+      context: .
+      dockerfile: ./src/modules/NeutrosophicDataProcessing/neutrosophic.Dockerfile
+      target: test
+    volumes:
+      - ./src:/app/src
+      - ./tests:/app/tests
+    networks:
+      - ffed_network
+
 networks:
   ffed_network:
     driver: bridge

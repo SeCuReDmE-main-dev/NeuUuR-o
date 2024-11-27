@@ -109,6 +109,17 @@ def determine_search_priority(data):
     # Example: Prioritize rows based on a specific column value
     return data.sort_values(by='priority_column', ascending=False)
 
+# Function to perform data analysis
+def analyze_data(data):
+    # Example analysis logic: compute basic statistics
+    analysis = {
+        'mean': data.mean().to_dict(),
+        'std': data.std().to_dict(),
+        'min': data.min().to_dict(),
+        'max': data.max().to_dict()
+    }
+    return analysis
+
 # Save or output the filtered data
 def save_data(data, output_path):
     data.to_csv(output_path, index=False)
@@ -139,6 +150,10 @@ def main():
 
     # Determine search priority
     prioritized_data = determine_search_priority(neutrosophic_data)
+
+    # Perform data analysis
+    analysis = analyze_data(filtered_data)
+    print("Data Analysis:", analysis)
 
     # Save the filtered data
     save_data(prioritized_data, config['output_path'])

@@ -5,6 +5,11 @@ FROM python:3.9-slim as base
 FROM base as dev
 RUN pip install pytest black mypy
 
+# Testing image with pytest
+FROM dev as test
+COPY tests/ /app/tests/
+CMD ["pytest", "/app/tests"]
+
 # Neutrosophic core image
 FROM base as neutrosophic
 COPY neutrosophic%20quantum%20FfeD%20enhancement/core.py /app/
