@@ -28,8 +28,9 @@ services:
     volumes:
       - mindsdb_data:/root/mindsdb_storage
       - ./src:/app/src
+      - ./modulesettings.json:/app/modulesettings.json  # Mount the modulesettings.json file
     environment:
-      MINDSDB_CONFIG_PATH: /root/mindsdb_config.json
+      MINDSDB_CONFIG_PATH: /app/modulesettings.json  # Update to point to the mounted configuration file
       MINDSDB_DOCKER_ENV: "true"
       PYTHONUNBUFFERED: 1
     networks:
