@@ -8,7 +8,8 @@ setup(
         'mindsdb',
         'torch',
         'torchquantum',
-        'pytorchquantum',
+        'qiskit',
+    ]
         'qiskit',
         'transformers',
         'pycaret',
