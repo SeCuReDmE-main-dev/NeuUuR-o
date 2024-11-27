@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  ffed_server:
+    build: .
+    ports:
+      - "32168:32168"
+      - "32168:32168/udp"
+    volumes:
+      - ./src:/app/src
+      - ./models:/app/models
+    environment:
+      - PYTHONPATH=/app
+      - U2NET_HOME=/app/models
+    networks:
+      - ffed_network
+
+  mindsdb:
+    image: mindsdb/mindsdb
+    ports:
+      - "47334:47334"
+    volumes:
+      - mindsdb_data:/root/mindsdb_storage
+    networks:
+      - ffed_network
+
+networks:
+  ffed_network:
+    driver: bridge
+
+volumes:
+  mindsdb_data:
