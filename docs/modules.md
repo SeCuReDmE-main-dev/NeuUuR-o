@@ -853,3 +853,10 @@ NeuUuR-o now utilizes MindsDB's Bring Your Own Model (BYOM) feature to integrate
 - **Parameter Handling**: Time series features can be controlled via parameters in the Human Hub social media portal.
 
 ### Usage
+
+## Time Series Feature Extraction
+
+NeuUuR-o includes a method to extract time series features similar to those defined in the `tsfeatures` R package. The `extract_time_series_features` function computes various statistical properties of the time series data.
+
+### Usage
+```markdown

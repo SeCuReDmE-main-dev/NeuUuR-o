@@ -8,6 +8,8 @@ from statsmodels.tsa.ar_model import AutoReg
 from statsmodels.tsa.arima.model import ARIMA
 from mindsdb import Predictor
 import logging
+import tsfresh
+from tsfresh.feature_extraction import extract_features
 
 # Configuration parameters
 config = {
@@ -111,6 +113,16 @@ class NeuUuR_o:
         predictions = self.predictor.predict(when=data)
         return predictions
 
+    def extract_time_series_features(self, data):
+        # Extract time series features similar to the tsfeatures package
+        extracted_features = extract_features(
+            data,
+            column_id='id',
+            column_sort='time',
+            default_fc_parameters=tsfresh.feature_extraction.MinimalFCParameters()
+        )
+        return extracted_features
+
 # Main function to execute the script
 def main():
     try:
@@ -155,6 +167,10 @@ def main():
         neuucro.data_scripting(filtered_data)
         neuucro.neural_network_training(filtered_data)
         neuucro.subconscious_process_management()
+
+        # Extract time series features
+        features = neuucro.extract_time_series_features(filtered_data)
+        logging.info(f"Extracted features: {features}")
 
         # Train MindsDB model
         neuucro.train_mindsdb_model(filtered_data)
