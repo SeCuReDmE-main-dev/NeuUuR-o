@@ -16,17 +16,21 @@ services:
       - ffed_network
 
   mindsdb:
-    image: mindsdb/mindsdb
+    build:
+      context: .
+      dockerfile: ./src/modules/NeutrosophicDataProcessing/neutrosophic.Dockerfile
+      target: prod
     ports:
       - "47334:47334"
       - "47335:47335"
+      - "47336:47336"
     volumes:
       - mindsdb_data:/root/mindsdb_storage
-      - ./model.py:/app/model.py
-      - ./requirements.txt:/app/requirements.txt
+      - ./src:/app/src
     environment:
-      MINDSDB_INSTALL_PLUGINS: "neuralforecast,statsforecast"
-      MINDSDB_EXPOSE_UI: "true"
+      MINDSDB_CONFIG_PATH: /root/mindsdb_config.json
+      MINDSDB_DOCKER_ENV: "true"
+      PYTHONUNBUFFERED: 1
     networks:
       - ffed_network
 
