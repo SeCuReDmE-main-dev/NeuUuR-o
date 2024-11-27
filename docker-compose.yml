@@ -97,6 +97,22 @@ services:
               count: 1
               capabilities: [gpu]
 
+  live_test:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.live_test  # Dockerfile for live testing
+    volumes:
+      - ./tests/live_test.py:/app/live_test.py
+    depends_on:
+      - ffed_server
+      - mindsdb
+      - database
+      - redis
+      - neuuro_actuator
+    command: ["python", "live_test.py"]
+    networks:
+      - ffed_network
+
 networks:
   ffed_network:
     driver: bridge
