@@ -7,6 +7,7 @@ from statsmodels.tsa.stattools import acf, pacf
 from statsmodels.tsa.ar_model import AutoReg
 from statsmodels.tsa.arima.model import ARIMA
 from mindsdb import Predictor
+import logging
 
 # Configuration parameters
 config = {
@@ -16,6 +17,9 @@ config = {
     'mindsdb_project': 'neutrosophic_data_processing',
     'mindsdb_model': 'data_filter_model'
 }
+
+# Set up logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Function to load data from CSV
 def load_csv(file_path):
@@ -69,37 +73,52 @@ def save_data(data, output_path):
 
 # Main function to execute the script
 def main():
-    # Load data based on the specified format
-    if config['data_format'] == 'csv':
-        data = load_csv(config['file_path'])
-    elif config['data_format'] == 'json':
-        data = load_json(config['file_path'])
-    elif config['data_format'] == 'xml':
-        data = load_xml(config['file_path'])
-    else:
-        raise ValueError("Unsupported data format")
+    try:
+        logging.info("Starting data processing")
 
-    # Apply data filtration logic
-    filtered_data = filter_data(data)
+        # Load data based on the specified format
+        if config['data_format'] == 'csv':
+            data = load_csv(config['file_path'])
+        elif config['data_format'] == 'json':
+            data = load_json(config['file_path'])
+        elif config['data_format'] == 'xml':
+            data = load_xml(config['file_path'])
+        else:
+            raise ValueError("Unsupported data format")
 
-    # Apply advanced linear mathematical operations
-    acf_values = advanced_linear_operations(filtered_data)
+        logging.info("Data loaded successfully")
 
-    # Apply neutrosophic set operations
-    neutrosophic_data = neutrosophic_operations(filtered_data)
+        # Apply data filtration logic
+        filtered_data = filter_data(data)
+        logging.info("Data filtration completed")
 
-    # Apply vector and matrix operations
-    covariance_matrix = vector_matrix_operations(neutrosophic_data)
+        # Apply advanced linear mathematical operations
+        acf_values = advanced_linear_operations(filtered_data)
+        logging.info("Advanced linear operations completed")
 
-    # Determine search priority
-    prioritized_data = determine_search_priority(neutrosophic_data)
+        # Apply neutrosophic set operations
+        neutrosophic_data = neutrosophic_operations(filtered_data)
+        logging.info("Neutrosophic operations completed")
 
-    # Save the filtered data
-    save_data(prioritized_data, config['output_path'])
+        # Apply vector and matrix operations
+        covariance_matrix = vector_matrix_operations(neutrosophic_data)
+        logging.info("Vector and matrix operations completed")
 
-    # Interact with MindsDB
-    predictor = Predictor(name=config['mindsdb_model'])
-    predictor.learn(from_data=config['file_path'], to_predict='target_column')
+        # Determine search priority
+        prioritized_data = determine_search_priority(neutrosophic_data)
+        logging.info("Search priority determination completed")
+
+        # Save the filtered data
+        save_data(prioritized_data, config['output_path'])
+        logging.info("Filtered data saved successfully")
+
+        # Interact with MindsDB
+        predictor = Predictor(name=config['mindsdb_model'])
+        predictor.learn(from_data=config['file_path'], to_predict='target_column')
+        logging.info("MindsDB interaction completed")
+
+    except Exception as e:
+        logging.error(f"An error occurred: {e}")
 
 # Entry point to run the script
 if __name__ == "__main__":
