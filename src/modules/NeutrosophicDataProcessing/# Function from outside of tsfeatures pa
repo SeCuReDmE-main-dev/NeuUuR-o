@@ -1,5 +1,1 @@
-# Function from outside of tsfeatures package being used
-is.monthly <- function(x){
-  frequency(x) == 12
-}
-tsfeatures(mylist, features = "is.monthly")
+call "%sdkScriptsPath%\\utils.bat" GetFromServer "rembg-models.zip" "models" "Downloading Background Remover models..."
