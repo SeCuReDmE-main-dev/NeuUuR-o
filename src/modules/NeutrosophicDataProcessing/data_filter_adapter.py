@@ -113,9 +113,12 @@ def main():
         logging.info("Filtered data saved successfully")
 
         # Interact with MindsDB
-        predictor = Predictor(name=config['mindsdb_model'])
-        predictor.learn(from_data=config['file_path'], to_predict='target_column')
-        logging.info("MindsDB interaction completed")
+        try:
+            predictor = Predictor(name=config['mindsdb_model'])
+            predictor.learn(from_data=config['file_path'], to_predict='target_column')
+        except Exception as e:
+            logging.error(f"MindsDB predictor error: {e}")
+            raise
 
     except Exception as e:
         logging.error(f"An error occurred: {e}")
