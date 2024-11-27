@@ -71,4 +71,21 @@ document.getElementById('neuuro_process_button').addEventListener('click', funct
         console.error('Error:', error);
     });
 });
+
+document.getElementById('setup_button').addEventListener('click', function() {
+    fetch('/setup', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ mode: 'development' })
+    })
+    .then(response => response.json())
+    .then(result => {
+        console.log('Setup Result:', result);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
 // ...existing code...

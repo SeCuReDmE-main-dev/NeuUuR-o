@@ -14,6 +14,7 @@ services:
       - U2NET_HOME=/app/models
     networks:
       - ffed_network
+    entrypoint: ["./setup.sh"]
 
   mindsdb:
     build:
@@ -33,6 +34,7 @@ services:
       PYTHONUNBUFFERED: 1
     networks:
       - ffed_network
+    entrypoint: ["./setup.sh"]
 
   database:
     image: postgres:latest

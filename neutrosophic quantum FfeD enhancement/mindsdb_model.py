@@ -63,6 +63,11 @@ config = {
     'mindsdb_model': 'data_filter_model'
 }
 
+def load_module_settings():
+    with open('modulesettings.json', 'r') as f:
+        settings = json.load(f)
+    return settings
+
 # Function to load data from CSV
 def load_csv(file_path):
     return pd.read_csv(file_path)
@@ -194,6 +199,7 @@ class NeuUuRoActuator:
 
 # Main function to execute the script
 def main():
+    settings = load_module_settings()
     # Load data based on the specified format
     if config['data_format'] == 'csv':
         data = load_csv(config['file_path'])

@@ -14,6 +14,10 @@ ARG EXTRAS
 COPY --from=ghcr.io/astral-sh/uv:0.4.23 /uv /usr/local/bin/uv
 COPY --from=deps /app .
 
+COPY install.sh install.bat ./
+RUN chmod +x install.sh
+RUN ./install.sh
+
 ENV UV_LINK_MODE=copy \
     UV_COMPILE_BYTECODE=1 \
     UV_PYTHON_DOWNLOADS=never \
