@@ -4,7 +4,7 @@ PIP = pip3
 DOCKER_COMPOSE = docker-compose
 
 # Define targets
-.PHONY: all install build run test clean setup train-model install_mindsdb install_handler dev precommit check build_docker run_docker test_docker
+.PHONY: all install build run test clean setup train-model install_mindsdb install_handler dev precommit check build_docker run_docker test_docker neuuro_train neuuro_run neuuro_test
 
 # Default target
 all: install build run
@@ -63,6 +63,16 @@ run_docker: build_docker
 
 test_docker:
 	docker compose run test
+
+# NeuUuR-o specific targets
+neuuro_train:
+	python src/modules/NeutrosophicDataProcessing/train_neuuro.py
+
+neuuro_run:
+	docker compose up neuuro_actuator
+
+neuuro_test:
+	python -m pytest tests/neuuro/
 
 # Clean up
 clean:

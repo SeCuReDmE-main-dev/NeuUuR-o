@@ -34,4 +34,25 @@ document.getElementById('analyze_data_button').addEventListener('click', functio
         console.error('Error:', error);
     });
 });
+
+document.getElementById('neuuro_process_button').addEventListener('click', function() {
+    const data = document.getElementById('time_series_data').value;
+    fetch('/neuuro/process', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ 
+            data: JSON.parse(data),
+            emotional_context: true 
+        })
+    })
+    .then(response => response.json())
+    .then(result => {
+        document.getElementById('neuuro_result').innerText = JSON.stringify(result, null, 2);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
 // ...existing code...

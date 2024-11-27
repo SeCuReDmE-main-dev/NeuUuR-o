@@ -65,6 +65,25 @@ services:
     networks:
       - ffed_network
 
+  neuuro_actuator:
+    build:
+      context: .
+      dockerfile: ./src/modules/NeutrosophicDataProcessing/neutrosophic.Dockerfile
+      target: neuuro
+    ports:
+      - "32168:32168"
+    volumes:
+      - ./src:/app/src
+      - ./models:/app/models
+    environment:
+      - PYTHONPATH=/app
+      - NEUURO_CONFIG=/app/config/neuuro.json
+    networks:
+      - ffed_network
+    depends_on:
+      - mindsdb
+      - database
+
 networks:
   ffed_network:
     driver: bridge

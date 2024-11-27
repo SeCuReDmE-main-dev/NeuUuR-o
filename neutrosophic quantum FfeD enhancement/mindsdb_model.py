@@ -124,6 +124,37 @@ def analyze_data(data):
     }
     return analysis
 
+class NeuUuRoActuator:
+    def __init__(self, config):
+        self.config = config
+        self.predictor = Predictor(name=config['mindsdb_model'])
+        
+    def create_ai_bot(self, task_type):
+        """Creates specialized AI bots for data gathering"""
+        bot_config = {
+            'task_type': task_type,
+            'learning_rate': 0.01,
+            'emotional_context': True
+        }
+        return bot_config
+
+    def process_emotional_context(self, data):
+        """Process emotional context in data"""
+        emotional_features = {
+            'sentiment': self.analyze_sentiment(data),
+            'context': self.extract_context(data)
+        }
+        return emotional_features
+
+    def train_neural_network(self, data, target):
+        """Train neural network with emotional context"""
+        enhanced_data = self.process_emotional_context(data)
+        self.predictor.learn(
+            from_data=enhanced_data,
+            to_predict=target,
+            advanced_args={'emotional_weight': 0.3}
+        )
+
 # Main function to execute the script
 def main():
     # Load data based on the specified format
@@ -159,8 +190,8 @@ def main():
     save_data(prioritized_data, config['output_path'])
 
     # Interact with MindsDB
-    predictor = Predictor(name=config['mindsdb_model'])
-    predictor.learn(from_data=config['file_path'], to_predict='target_column')
+    actuator = NeuUuRoActuator(config)
+    actuator.train_neural_network(filtered_data, 'target_column')
 
 # Entry point to run the script
 if __name__ == "__main__":
