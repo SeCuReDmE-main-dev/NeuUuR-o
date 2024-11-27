@@ -3,9 +3,11 @@
 ## Neutrosophic Quantum FfeD Enhancement - Core Module
 
 ### Description
-This module is an enhanced version of the original FfeD core module, incorporating neutrosophic linear and vector/matrix operations to handle missing variables and improve the accuracy and robustness of the FfeD framework.
+
+> This module is an enhanced version of the original FfeD core module, incorporating neutrosophic linear and vector/matrix operations to handle missing variables and improve the accuracy and robustness of the FfeD framework.
 
 ### Variables
+
 - Mass
 - Momentum
 - Energy
@@ -26,17 +28,17 @@ This module is an enhanced version of the original FfeD core module, incorporati
 - Electric field
 - Magnetic field
 - Wave amplitude
-- Wavevector
+- Wave vector
 - Angular frequency
 - Propagation velocity
-- Number of corners
 - Transitional state
 
 ### Equations
+
 - Fractal Growth Rate with Neutrosophic Logic:
-  G(t) = k * Df * μ * V * T + I * F
+  G(t) = k *Df* μ *V* T + I * F
 - Anti-Entropy Rate with Neutrosophic Logic:
-  A(t) = ∫0^t G(t) dt - λ * S(t) * T + I * F
+  A(t) = ∫0^t G(t) dt - λ *S(t)* T + I * F
 
 ### Functions
 - `neutrosophic_set(T, I, F)`: Returns a neutrosophic set with truth, indeterminacy, and falsity values.
@@ -98,9 +100,9 @@ This module is an enhanced version of the original FfeD grid optimizer module, i
 
 ### Equations
 - Fractal Growth Rate with Neutrosophic Logic:
-  G(t) = k * Df * μ * V * T + I * F
+  G(t) = k *Df* μ *V* T + I * F
 - Anti-Entropy Rate with Neutrosophic Logic:
-  A(t) = ∫0^t G(t) dt - λ * S(t) * T + I * F
+  A(t) = ∫0^t G(t) dt - λ *S(t)* T + I * F
 
 ### Functions
 - `neutrosophic_set(T, I, F)`: Returns a neutrosophic set with truth, indeterminacy, and falsity values.
@@ -162,9 +164,9 @@ This module is an enhanced version of the original FfeD home controller module, 
 
 ### Equations
 - Fractal Growth Rate with Neutrosophic Logic:
-  G(t) = k * Df * μ * V * T + I * F
+  G(t) = k *Df* μ *V* T + I * F
 - Anti-Entropy Rate with Neutrosophic Logic:
-  A(t) = ∫0^t G(t) dt - λ * S(t) * T + I * F
+  A(t) = ∫0^t G(t) dt - λ *S(t)* T + I * F
 
 ### Functions
 - `neutrosophic_set(T, I, F)`: Returns a neutrosophic set with truth, indeterminacy, and falsity values.
@@ -226,9 +228,9 @@ This module is an enhanced version of the original FfeD hyd dr core module, inco
 
 ### Equations
 - Fractal Growth Rate with Neutrosophic Logic:
-  G(t) = k * Df * μ * V * T + I * F
+  G(t) = k *Df* μ *V* T + I * F
 - Anti-Entropy Rate with Neutrosophic Logic:
-  A(t) = ∫0^t G(t) dt - λ * S(t) * T + I * F
+  A(t) = ∫0^t G(t) dt - λ *S(t)* T + I * F
 
 ### Functions
 - `neutrosophic_set(T, I, F)`: Returns a neutrosophic set with truth, indeterminacy, and falsity values.
@@ -290,9 +292,9 @@ This module is an enhanced version of the original FfeD mindsdb integration modu
 
 ### Equations
 - Fractal Growth Rate with Neutrosophic Logic:
-  G(t) = k * Df * μ * V * T + I * F
+  G(t) = k *Df* μ *V* T + I * F
 - Anti-Entropy Rate with Neutrosophic Logic:
-  A(t) = ∫0^t G(t) dt - λ * S(t) * T + I * F
+  A(t) = ∫0^t G(t) dt - λ *S(t)* T + I * F
 
 ### Functions
 - `neutrosophic_set(T, I, F)`: Returns a neutrosophic set with truth, indeterminacy, and falsity values.
@@ -354,9 +356,9 @@ This module is an enhanced version of the original FfeD mindsdb model module, in
 
 ### Equations
 - Fractal Growth Rate with Neutrosophic Logic:
-  G(t) = k * Df * μ * V * T + I * F
+  G(t) = k *Df* μ *V* T + I * F
 - Anti-Entropy Rate with Neutrosophic Logic:
-  A(t) = ∫0^t G(t) dt - λ * S(t) * T + I * F
+  A(t) = ∫0^t G(t) dt - λ *S(t)* T + I * F
 
 ### Functions
 - `neutrosophic_set(T, I, F)`: Returns a neutrosophic set with truth, indeterminacy, and falsity values.
@@ -418,9 +420,9 @@ This module is an enhanced version of the original FfeD optimization engine modu
 
 ### Equations
 - Fractal Growth Rate with Neutrosophic Logic:
-  G(t) = k * Df * μ * V * T + I * F
+  G(t) = k *Df* μ *V* T + I * F
 - Anti-Entropy Rate with Neutrosophic Logic:
-  A(t) = ∫0^t G(t) dt - λ * S(t) * T + I * F
+  A(t) = ∫0^t G(t) dt - λ *S(t)* T + I * F
 
 ### Functions
 - `neutrosophic_set(T, I, F)`: Returns a neutrosophic set with truth, indeterminacy, and falsity values.
@@ -482,9 +484,9 @@ This module is an enhanced version of the original FfeD python library module, i
 
 ### Equations
 - Fractal Growth Rate with Neutrosophic Logic:
-  G(t) = k * Df * μ * V * T + I * F
+  G(t) = k *Df* μ *V* T + I * F
 - Anti-Entropy Rate with Neutrosophic Logic:
-  A(t) = ∫0^t G(t) dt - λ * S(t) * T + I * F
+  A(t) = ∫0^t G(t) dt - λ *S(t)* T + I * F
 
 ### Functions
 - `neutrosophic_set(T, I, F)`: Returns a neutrosophic set with truth, indeterminacy, and falsity values.
